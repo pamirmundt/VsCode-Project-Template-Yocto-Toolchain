@@ -38,6 +38,9 @@
                 "reveal": "always",
                 "panel": "shared",
             },
+            "dependsOn": [
+                "Kill GDB Server"
+            ]
         },
         /* Kill GDB Server */
         {
