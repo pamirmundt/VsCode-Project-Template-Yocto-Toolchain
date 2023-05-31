@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "customVariables": {
+        // Target
+        "TARGET_IP": "192.168.2.100",
+        "TARGET_GDB_PORT": "3000",
+        "TARGET_SSH_USER": "root",
+        "TARGET_SSH_PASSWORD": "",
+        "TARGET_EXECUTABLE_PATH": "/home/root",
+        "TARGET_ARCHITECTURE": "x86_64",
+        "EXECUTABLE_NAME": "helloWorld",
+        // Host
+        "HOST_EXECUTABLE_PATH": "${workspaceFolder}/bin",
+    }
+}

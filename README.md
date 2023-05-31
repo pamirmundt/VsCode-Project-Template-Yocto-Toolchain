@@ -7,7 +7,7 @@ This is a vscode project template for yocto project cross-compile environment. I
 - CMake (twxs.cmake)
 - CMake Tools (ms-vscode.cmake-tools)
 
-## Setup your cmake-kits.json file
+## Setup your `cmake-kits.json` file
 The cmake-kits.json file is used to configure the cross-compile environment. You need to modify the following parameters according to your own situation:
 ```json
 [
@@ -22,6 +22,11 @@ The cmake-kits.json file is used to configure the cross-compile environment. You
     }
 ]
 ```
+## Setup you `tasks.json` file for deploying your application to the target board
+The tasks.json file is used to configure the deployment of the application to the target board. You need to modify the following parameters according to your own situation:
+```json
+
+
 
 ## Select the active kit
 You can select the active kit by clicking the "Select a Kit" button in the lower left corner of the vscode window. The active kit is the cross-compile environment you want to use.

@@ -1,0 +1,73 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        /* CMake Build */
+        {
+            "label": "CMake: Build",
+            "type": "cmake",
+            "command": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            },
+            "dependsOn": [
+                "CMake: Configure"
+            ]
+        },
+        /* CMake Configure */
+        {
+            "label": "CMake: Configure",
+            "type": "cmake",
+            "command": "configure",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            }
+        },
+        /* Start GDB Server */
+        {
+            "label": "Start GDB Server",
+            "type": "shell",
+            "command": "ssh",
+            "args": [
+                "${config:customVariables.TARGET_SSH_USER}@${config:customVariables.TARGET_IP}",
+                "sh -c \"cd ${config:customVariables.TARGET_EXECUTABLE_PATH} && gdbserver localhost:${config:customVariables.TARGET_GDB_PORT} ./${config:customVariables.EXECUTABLE_NAME}\""
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            },
+        },
+        /* Kill GDB Server */
+        {
+            "label": "Kill GDB Server",
+            "type": "shell",
+            "command": "ssh",
+            "args": [
+                "${config:customVariables.TARGET_SSH_USER}@${config:customVariables.TARGET_IP}",
+                "kill `pidof gdbserver` || true"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            },
+            "problemMatcher": [],
+        },
+        /* Deploy Executable */
+        {
+            "label": "Deploy Executable",
+            "type": "shell",
+            "command": "scp",
+            "args": [
+                "${config:customVariables.HOST_EXECUTABLE_PATH}/${config:customVariables.EXECUTABLE_NAME}",
+                "${config:customVariables.TARGET_SSH_USER}@${config:customVariables.TARGET_IP}:${config:customVariables.TARGET_EXECUTABLE_PATH}"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+            },
+            "problemMatcher": []
+        }
+]
+}
